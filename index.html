@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Duck Time Leaderboard</title>
+
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic);
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #ffffff;
+        background-color: #B9BACA;
+        font-family: 'Arvo',serif !important;
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+
+      main {
+        margin: 15% auto;
+        background: #FFFFFF;
+        border: 5px solid #676767;
+        box-shadow: 8px 9px 0px 0px #F5A623, 15px 18px 0px 0px #F8E71C;
+        padding: 2em 3em;
+        max-width: 600px;
+      }
+      h1 {
+        margin-top: 0;
+        color: #4A4A4A;
+      }
+      article {
+        padding-bottom: 1em;
+        margin-bottom: 2em;
+        border-bottom: 1px solid #ccc;
+      }
+      textarea {
+        display: block;
+        width: 100%;
+      }
+      a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #049cd8;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      textarea,
+      .comment {
+        border: 1px solid #ccc;
+        padding: .5em 1em;
+        margin: 1em 0;
+        border-radius: 5px;
+      }
+      textarea {
+        font-size: inherit;
+      }
+
+
+      .theduck {
+        text-align: center;
+        font-size: 150px;
+        margin-top: 150px;
+      }
+
+      #title {
+        text-align: center;
+      }
+
+      .counter-box {
+        flex: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      .like {
+        float:left;
+        clear: none;
+        margin-right: 20px;
+
+      }
+
+
+
+    </style>
+  </head>
+
+
+  <body>
+    <main>
+      <article>
+        <div id="title">
+          <h1>Who(Hu)'s gotta a bigger duck?</h1>
+        </div>
+
+        <div  class="theduck">
+        🦆
+        </div>
+      </article>
+
+      <div class="counter-box">
+        <div class="like">
+          <a href="#" class="on-time">On-time</a>
+          (<span class="count-up5">0</span>)
+        </div>
+
+
+      </div>
+
+
+
+
+
+    </main>
+
+
+
+
+    <script>
+      // + 5
+      var likeBtn = document.querySelector(".on-time");
+      var likeCount = document.querySelector(".count-up5");
+      var duckGrow = document.querySelector(".theduck");
+      console.log();
+
+      likeBtn.addEventListener("click", likeAction);
+
+      function likeAction(event) {
+        event.preventDefault();
+        likeCount.textContent = Number(likeCount.textContent) + 5;
+        duckGrow.style.fontSize = "10px";
+
+      }
+
+
+
+
+
+
+
+      // comment
+
+      var inputComment = document.querySelector("textarea");
+      var commentBtn = document.querySelector("button");
+      var listComment = document.querySelector("#comments")
+
+      commentBtn.addEventListener('click', addListItem);
+
+      function addListItem(event) {
+        event.preventDefault();
+        var commentText = document.createElement("div");
+        commentText.textContent = inputComment.value;
+        listComment.appendChild(commentText);
+
+
+
+        }
+
+
+
+    </script>
+  </body>
+</html>
