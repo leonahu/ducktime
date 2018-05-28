@@ -26,8 +26,9 @@
         max-width: 600px;
       }
       h1 {
-        margin-top: 0;
+        padding: 2rem auto;
         color: #4A4A4A;
+        line-height: 1em;
       }
       article {
         padding-bottom: 1em;
@@ -81,7 +82,13 @@
 
       }
 
+      .theduck {
+        text-align: center;
+      }
 
+      .thebuttons {
+        text-align: center;
+      }
 
     </style>
   </head>
@@ -89,28 +96,22 @@
 
   <body>
     <main>
-      <article>
-        <div id="title">
-          <h1>Who(Hu)'s gotta a bigger duck?</h1>
-        </div>
-
-        <div  class="theduck">
-        🦆
-        </div>
-      </article>
-
-      <div class="counter-box">
-        <div class="like">
-          <a href="#" class="on-time">On-time</a>
-          (<span class="count-up5">0</span>)
-        </div>
-
-
+      <div id="title">
+        <h1>Who(Hu)'s gotta a bigger duck?</h1>
       </div>
+      <div class="theduck">
+        <p style="font-size : 120px">🦆</p>
+      <div>
+      </div>
+  </div>
+
+    <div class="thebuttons">
 
 
-
-
+      <button id="btn-increase">On Time + 5 points</button>
+      <button id="btn-decrease">Late - 5 points</button>
+      <button id="btn-no-show">No show - 10 points</button>
+    </div>
 
     </main>
 
@@ -118,20 +119,32 @@
 
 
     <script>
-      // + 5
-      var likeBtn = document.querySelector(".on-time");
-      var likeCount = document.querySelector(".count-up5");
-      var duckGrow = document.querySelector(".theduck");
-      console.log();
+        var $affectedElements = $("p");
 
-      likeBtn.addEventListener("click", likeAction);
 
-      function likeAction(event) {
-        event.preventDefault();
-        likeCount.textContent = Number(likeCount.textContent) + 5;
-        duckGrow.style.fontSize = "10px";
+            $affectedElements.each( function(){
+            var $this = $(this);
+            $this.data("orig-size", $this.css("font-size") );
+            });
 
-      }
+            $("#btn-increase").click(function(){
+            changeFontSize(5);
+            })
+
+            $("#btn-decrease").click(function(){
+            changeFontSize(-5);
+            })
+
+            $("#btn-no-show").click(function(){
+            changeFontSize(-10);
+            })
+
+            function changeFontSize(direction){
+            $affectedElements.each( function(){
+                var $this = $(this);
+                $this.css( "font-size" , parseInt($this.css("font-size"))+direction );
+            });
+            }
 
 
 
